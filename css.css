@@ -1,0 +1,76 @@
+.hr {
+	border: 1.5px solid #666; 
+	border-radius: 100px/10px; 
+	height: 0px; 
+	text-align: center;
+}
+
+body {
+      position: relative; 
+  }
+
+.card-container:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.card-4{
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1), 0 2px 10px 0 rgba(0,0,0,0.1)
+}
+
+.card-padding{
+	position: relative;
+	padding: 8px 8px 8px 8px;
+}
+
+.circle-red{
+    border-radius:50%;
+    border:5px solid red;
+    width:15px;
+    height:15px;
+    background-color:red;
+    position: relative;
+    padding: 5px 5px 5px 5px; 
+}
+
+.circle-yellow{
+    border-radius:50%;
+    border:5px solid yellow;
+    width:15px;
+    height:15px;
+    background-color:yellow;
+    position: relative;
+    padding: 5px 5px 5px 5px; 
+}
+
+.circle-black{
+    border-radius:50%;
+    border:5px solid black;
+    width:15px;
+    height:15px;
+    background-color:black;
+    position: relative;
+    padding: 5px 5px 5px 5px; 
+}
+
+
+.circle-green{
+    border-radius:50%;
+    border:5px solid green;
+    width:15px;
+    height:15px;
+    background-color:green;
+    position: relative;
+    padding: 5px 5px 5px 5px; 
+}
+
+.circle-blue{
+    border-radius:50%;
+    border:5px solid blue;
+    width:15px;
+    height:15px;
+    background-color:blue;
+    position: relative;
+    padding: 5px 5px 5px 5px; 
+}

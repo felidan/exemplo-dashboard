@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Safra Financeira</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="css.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="Chart.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body style="height:1500px">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Painel Financeira</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#dash-prp-contrato">Propostas e Contratos</a></li>
+      <li><a href="#dash-consultas">Consultas</a></li>
+      <li><a href="#dash-pgto">Pagamentos (GDE)</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Login</a></li>
+      <li><a href="#"><i class="fas fa-clock"></i></a></li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row">
+
+    <div id="dash-prp-contrato"></div>
+    <br/><br/><br/>
+    <div class="col-md-6">
+      <div class="card-container" style="width: 100%">
+        <h3>Quantidade de propostas e contratos</h3>
+        <div class="card-4" style="width: 100%">
+          <canvas id="line-chart" class="card-padding"></canvas>
+          <div class="card-container" style="width: 100%">
+            <hr/>
+            <p class="card-padding"><strong>1237</strong> propostas e <strong>849</strong> contratos até o momento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">  
+      <div class="card-container" style="width: 100%">
+        <h3>Status de propostas</h3>
+        <div class="card-4" style="width: 100%">
+          <canvas id="doughnut-chart" width="555" height="277"></canvas>
+          <div class="card-container" style="width: 100%">
+            <hr/>
+            <p class="card-padding">LEGENDA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="dash-consultas"></div>
+  <br/><br/>
+  <hr class="hr">
+
+  <div class="container">
+  <br/>
+  <h3>Validações</h3>
+    <ul class="list-group col-md-6">
+      <li class="list-group-item">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="circle-red col-md-6"></div> 
+            <div class="col-md-6">Pagamentos GDE</div>
+          </div>
+          <div class="panel-body">
+            <div class="circle-yellow col-md-6"></div>
+            <div class="col-md-6">Consultas Externas</div>
+          </div>
+        </div>    
+      </li>
+      <li class="list-group-item">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="circle-blue col-md-6"></div> 
+            <div class="col-md-6">Consultas Internas</div>
+          </div>
+          <div class="panel-body">
+            <div class="circle-green col-md-6"></div>
+            <div class="col-md-6">Boletos</div>
+          </div>
+        </div>    
+      </li>
+    </ul>
+       <ul class="list-group col-md-6">
+      <li class="list-group-item">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="circle-red col-md-6"></div> 
+            <div class="col-md-6">Consultas INSS</div>
+          </div>
+          <div class="panel-body">
+            <div class="circle-black col-md-6"></div>
+            <div class="col-md-6">Consultas Serasa</div>
+          </div>
+        </div>    
+      </li>
+      <li class="list-group-item">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="circle-green col-md-6"></div> 
+            <div class="col-md-6">Envio de e-mail</div>
+          </div>
+          <div class="panel-body">
+            <div class="circle-green col-md-6"></div>
+            <div class="col-md-6">Envio de SMS</div>
+          </div>
+        </div>    
+      </li>
+    </ul>
+  </div>
+
+  <div id="dash-pgto"></div>
+  <hr class="hr">
+
+  <br/>
+  
+  <div class="container">
+    <h3>Pagamento</h3>
+  </div>
+</div>
+<script>
+  
+  $(document).ready(function(){
+    Init(); 
+  });
+
+  function Init(){
+    new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: ["9h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h", "19h", "20h", "21h"],
+    datasets: [{ 
+        data: [86,114,106,106,107,111,133,221,783,2478],
+        label: "Propostas",
+        borderColor: "#3e95cd",
+        fill: false
+      }, { 
+        data: [282,350,411,502,635,809,947,1402,3700,5267],
+        label: "Contratos",
+        borderColor: "#8e5ea2",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Propostas e contratos do dia'
+    }
+  }
+});
+
+    new Chart(document.getElementById("doughnut-chart"), {
+    type: 'doughnut',
+    data: {
+      labels: ["Aprovadas", "Mesa de crédito", "Aguardando política", "Recusadas", "Cancelada", "Expirada"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3cba9f","#3e95cd", "#8e5ea2","#c45850","#ff9d00", "#f6ff00"],
+          data: [1078,1267,734,784,433, 100]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Status de propostas do dia'
+      }
+    }
+});
+  }
+
+</script>
+
+</body>
+</html>
